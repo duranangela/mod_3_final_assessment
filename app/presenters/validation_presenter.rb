@@ -6,7 +6,7 @@ class ValidationPresenter
   end
 
   def root
-    JSON.parse(response.body, symbolize_names: true)[:results][:lexicalEntries][:inflectionOf][:text]
+    JSON.parse(response.body, symbolize_names: true)[:results][0][:lexicalEntries][0][:inflectionOf][0][:text]
   end
 
   def response
