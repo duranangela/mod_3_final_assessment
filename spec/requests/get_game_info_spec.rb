@@ -16,7 +16,6 @@ describe "GET '/api/v1/games/1'" do
       get '/api/v1/games/1'
 
       result = JSON.parse(response.body, symbolize_names: true)
-      binding.pry
 
       expect(response).to be_success
       expect(result[:game_id]).to eq(1)
