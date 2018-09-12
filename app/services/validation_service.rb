@@ -6,16 +6,8 @@ class ValidationService
   end
 
   def root
-    if body == 'error'
-      'error'
-    else
-      body
-    end
-  end
-
-  def body
     if response.status == 404
-      'error'
+      'error message'
     else
       JSON.parse(response.body, symbolize_names: true)[:results][0][:lexicalEntries][0][:inflectionOf][0][:text]
     end

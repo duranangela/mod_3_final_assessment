@@ -10,7 +10,7 @@ class ValidationPresenter
   end
 
   def message
-    if root == 'error'
+    if root == 'error message'
       "'#{word}' is a not a valid word"
     else
       "'#{word}' is a valid word and its root form is '#{root}'"
