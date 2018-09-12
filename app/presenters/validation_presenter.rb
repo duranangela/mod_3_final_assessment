@@ -10,22 +10,16 @@ class ValidationPresenter
   end
 
   def response
-    conn.get do |req|
-      req.headers(headers)
-    end
+    conn.get("/api/v1/inflections/en/#{word}")
   end
 
   def conn
-    Faraday.new(url: "https://od-api.oxforddictionaries.com/api/v1/inflections/en/#{word}") do |faraday|
+    Faraday.new(url: "https://od-api.oxforddictionaries.com") do |faraday|
       faraday.adapter Faraday.default_adapter
+      faraday.headers['app_id'] = ENV['DICT_APP_ID']
+      faraday.headers['app_key'] = ENV['DICT_APP_KEY']
     end
   end
 
-  def headers
-    {
-      app_id: ENV['DICT_APP_ID'],
-      app_key: ENV['DICT_APP_KEY']
-    }
-  end
 
 end
